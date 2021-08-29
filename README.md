@@ -1,32 +1,15 @@
 # ACM Research Coding Challenge (Fall 2021)
 
-## [](https://github.com/ACM-Research/Coding-Challenge-F21#no-collaboration-policy)No Collaboration Policy
 
-**You may not collaborate with anyone on this challenge.**  You  _are_  allowed to use Internet documentation. If you  _do_  use existing code (either from Github, Stack Overflow, or other sources),  **please cite your sources in the README**.
+## Explanation
+For this challenge, I implemented the Natural Language Toolkit(1) library in Python: this library contains VADER(2) - Valence Aware Dictionary and sEntiment Reasoner - a sentiment analysis tool. Vader made the process simple: I removed the "noise" - or the punctuation - to make tokenizing the file easier for the sentiment analysis, since we only want to get the sentiment of the words, or tokens, and not the punctuation characters. After performing the sentiment analysis with Vader, I output the results: the percent of positive words, followed by the percent of negative words, followed by the percent of neutral words, and lastly a verdict on whether there is a positive or negative sentiment. Because the neutral words don't convey any sentiment, they were ignored when giving the verdict. 
 
-## [](https://github.com/ACM-Research/Coding-Challenge-F21#submission-procedure)Submission Procedure
+For the given file, VADER determined that "input.txt" was 18.9% positive, 7.6% negative, and 73.5% neutral. When reading the first paragraph, it seems apparent that there is some negative connotation to the words, while also having sarcasm(?), although VADER only reads positive or negative sentiment. The second paragraph has more words with a positive connotation, so it makes sense that overall there is a higher positive sentiment percentage than negative.
 
-Please follow the below instructions on how to submit your answers.
+Without VADER, this challenge becomes, well, challenging. If I were to do the sentiment analysis without VADER, I would first need to tokenize the words variable, which would be done by using the split() method provided by Python. Afterwards is where the machine learning comes in. Unfortunately, I do not know how to create a model nor train it, so this point is about as far as I can go with my current time constraints. I have an idea on how I would implement the machine learning myself, if I knew how to create the model. I would use a Naive Bayes model because of its ability to classify data into groups. I would supervise the model to ensure that the proper values are reached. The values would be placed on a scale of -3 to 3, which goes from: very negative (-3), negative (-2), somewhat negative (-1), neutral (0), somewhat positive (1), positive (2), and very positive (3). The program would take the average of the word sentiment values by summing them together and dividing by the total amount of words.
 
-1.  Create a  **public**  fork of this repo and name it  `ACM-Research-Coding-Challenge-F21`. To fork this repo, click the button on the top right and click the "Fork" button.
 
-2.  Clone the fork of the repo to your computer using  `git clone [the URL of your clone]`. You may need to install Git for this (Google it).
+## Sources Cited
+1. Natural Language Toolkit (NLTK): Steven Bird, Ewan Klein, and Edward Loper (2009). Natural Language Processing with Python. O’Reilly Media Inc. http://nltk.org/book
 
-3.  Complete the Challenge based on the instructions below.
-
-4.  Submit your solution by filling out this [form](https://acmutd.typeform.com/to/zF1IcBGR).
-
-## Assessment Criteria 
-
-Submissions will be evaluated holistically and based on a combination of effort, validity of approach, analysis, adherence to the prompt, use of outside resources (encouraged), promptness of your submission, and other factors. Your approach and explanation (detailed below) is the most weighted criteria, and partial solutions are accepted. 
-
-## [](https://github.com/ACM-Research/Coding-Challenge-S21#question-one)Question One
-
-[Sentiment analysis](https://en.wikipedia.org/wiki/Sentiment_analysis) is a natural language processing technique that computes a sentiment score for a body of text. This sentiment score can quantify how positive, negative, or neutral the text is. The following dataset in  `input.txt`  contains a relatively large body of text.
-
-**Determine an overall sentiment score of the text in this file, explain what this score means, and contrast this score with what you expected.**  If your solution also provides different metrics about the text (magnitude, individual sentence score, etc.), feel free to add it to your explanation.   
-
-**You may use any programming language you feel most comfortable. We recommend Python because it is the easiest to implement. You're allowed to use any library/API you want to implement this**, just document which ones you used in this README file. Try to complete this as soon as possible as submissions are evaluated on a rolling basis.
-
-Regardless if you can or cannot answer the question, provide a short explanation of how you got your solution or how you think it can be solved in your README.md file. However, we highly recommend giving the challenge a try, you just might learn something new!
-
+2. VADER Sentiment Analyzer: Hutto, C.J. & Gilbert, E.E. (2014). VADER: A Parsimonious Rule-based Model for Sentiment Analysis of Social Media Text. Eighth International Conference on Weblogs and Social Media (ICWSM-14). Ann Arbor, MI, June 2014.
